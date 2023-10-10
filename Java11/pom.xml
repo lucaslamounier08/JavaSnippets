@@ -7,10 +7,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>HexagonalArchitecture</artifactId>
+    <artifactId>Java11</artifactId>
     <packaging>jar</packaging>
 
-    <name>HexagonalArchitecture</name>
+    <name>Java11</name>
 
     <url>http://maven.apache.org</url>
 
