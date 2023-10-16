@@ -23,4 +23,9 @@ class NewStringMethodsTest {
     void stringStripTrailing_ShouldRemoveEndEmptySpaces() {
         assertThat(" text between spaces ".stripTrailing()).isEqualTo(" text between spaces");
     }
+
+    @Test
+    void stringRepeat_ShouldRepeatText() {
+        assertThat("Dummy!".repeat(2)).isEqualTo("Dummy!Dummy!");
+    }
 }
