@@ -11,10 +11,16 @@ class NewStringMethodsTest {
 
     @Test
     void stringStrip_ShouldRemoveEmptySpaces() {
-        String s = " text between spaces ";
+        assertThat(" text between spaces ".strip()).isEqualTo("text between spaces");
+    }
 
-        s = s.strip();
+    @Test
+    void stringStripLeading_ShouldRemoveInitialEmptySpaces() {
+        assertThat(" text between spaces ".stripLeading()).isEqualTo("text between spaces ");
+    }
 
-        assertThat(s).isEqualTo("text between spaces");
+    @Test
+    void stringStripTrailing_ShouldRemoveEndEmptySpaces() {
+        assertThat(" text between spaces ".stripTrailing()).isEqualTo(" text between spaces");
     }
 }
