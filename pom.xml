@@ -21,7 +21,6 @@
     </description>
 
     <modules>
-        <module>HexagonalArchitecture</module>
         <module>Java11</module>
         <module>Java17</module>
     </modules>
