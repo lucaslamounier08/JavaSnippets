@@ -1,4 +1,4 @@
-package com.lucaslamounier;
+package com.lucaslamounier.java11;
 
 import org.junit.jupiter.api.Test;
 
