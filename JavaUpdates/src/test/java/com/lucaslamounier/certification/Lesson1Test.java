@@ -102,5 +102,14 @@ class Lesson1Test {
 
         String stringArray = Arrays.toString(ia);
         Assertions.assertEquals("[0, 4, 2, 3]", stringArray);
+
+        /////////////////
+        i = 0;
+        ia = new int[]{0, 1, 2, 3};
+
+        ia[i++] += ia[i];
+
+        stringArray = Arrays.toString(ia);
+        Assertions.assertEquals("[1, 1, 2, 3]", stringArray);
     }
 }
