@@ -97,7 +97,9 @@ class Lesson1Test {
     void questionDeepDive() {
         int i = 0;
         int [] ia = new int[]{0, 1, 2, 3};
+
         ia[++i] = ia[++i] + ia[i];
+
         String stringArray = Arrays.toString(ia);
         Assertions.assertEquals("[0, 4, 2, 3]", stringArray);
     }
