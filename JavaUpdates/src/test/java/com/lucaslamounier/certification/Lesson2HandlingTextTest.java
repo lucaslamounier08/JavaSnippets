@@ -25,5 +25,16 @@ class Lesson2HandlingTextTest {
         // string overrides equals() and hashCode(), StringBuilder don't
     }
 
-    
+    @Test
+    void methodsOfTheStringClass() {
+        // strings are immutable, identical text can be shared in the String Pool
+        String s1 = "Hello";
+        String s2 = "Hello";
+        String s3 = "He";
+        String s4 = s3 + "llo";
+        Assertions.assertTrue(s1 == s2);
+        Assertions.assertFalse(s1 == s4);
+        s4 = s4.intern();
+        Assertions.assertTrue(s1 == s4);
+    }
 }
