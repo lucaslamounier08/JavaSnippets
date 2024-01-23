@@ -57,4 +57,29 @@ class Lesson2HandlingTextTest {
                 "\"""";
         Assertions.assertEquals("\"\"", s1);
     }
+
+    @Test
+    void methodsOfTheStringBuilder() {
+        // StringBuilder with int as argument for capacity
+        StringBuilder sb = new StringBuilder(1);
+
+        Assertions.assertEquals("abacate", sb.append("abacate").toString());
+        Assertions.assertEquals("aacate", sb.delete(1, 2).toString());
+        Assertions.assertEquals("acate", sb.deleteCharAt(0).toString());
+        Assertions.assertEquals("abacate", sb.insert(1, "ba").toString());
+        Assertions.assertEquals("cacacate", sb.replace(0, 2, "cac").toString());
+        Assertions.assertEquals("etacacac", sb.reverse().toString());
+    }
+
+    @Test
+    void questionDeepDive() {
+        int i = 0;
+        String s = "Values: ";
+        loop: while (i < 5) {
+            if (i++ % 2 == 0) continue loop;
+            s.concat(", ").concat(Integer.toString(i));
+        }
+
+        Assertions.assertEquals("Values: ", s);
+    }
 }
