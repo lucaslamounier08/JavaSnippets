@@ -38,5 +38,23 @@ class Lesson2HandlingTextTest {
         Assertions.assertTrue(s1 == s4);
     }
 
-    
+    @Test
+    void textBlocks() {
+        String stringTextBlock = """
+                Hello""";
+        Assertions.assertEquals("Hello", stringTextBlock);
+        String stringTextBlockWithLineBreakEnd = """
+                Hello
+                """;
+        Assertions.assertEquals("Hello\n", stringTextBlockWithLineBreakEnd);
+
+        String blockWithSlashDoesNotBreakLine = """
+                TextBlock \
+                continues""";
+        Assertions.assertEquals("TextBlock continues", blockWithSlashDoesNotBreakLine);
+
+        String s1 = """
+                "\"""";
+        Assertions.assertEquals("\"\"", s1);
+    }
 }
