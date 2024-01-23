@@ -33,6 +33,8 @@ class Lesson1Test {
 
         Integer intzero = Integer.valueOf(0);
         //System.out.println(intzero.booleanValue()); //booleanValue does not exists
+        Boolean booleano = Boolean.FALSE;
+        booleano.booleanValue(); // exists
 
         Assertions.assertTrue(Double.isNaN(Double.parseDouble("NaN")));
         Assertions.assertFalse(Double.isFinite(Double.parseDouble("NaN")));
