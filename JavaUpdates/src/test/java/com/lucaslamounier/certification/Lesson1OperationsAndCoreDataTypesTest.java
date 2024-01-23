@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Lesson1Test {
+class Lesson1OperationsAndCoreDataTypesTest {
 
     @Test
     void wrapperTests() {
