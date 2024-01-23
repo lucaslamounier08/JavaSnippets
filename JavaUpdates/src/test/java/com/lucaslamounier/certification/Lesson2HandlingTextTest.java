@@ -37,4 +37,6 @@ class Lesson2HandlingTextTest {
         s4 = s4.intern();
         Assertions.assertTrue(s1 == s4);
     }
+
+    
 }
