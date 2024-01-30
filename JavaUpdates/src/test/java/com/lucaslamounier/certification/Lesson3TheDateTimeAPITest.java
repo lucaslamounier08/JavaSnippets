@@ -9,19 +9,23 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Lesson3TheDateTimeAPITest {
 
     @Test
-    void dateTimeAPI() {
+    void dateTimeAPI() throws InterruptedException {
         // absolute moment in history:
         Instant instant = Instant.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.now();
@@ -69,6 +73,32 @@ class Lesson3TheDateTimeAPITest {
         Period thirtyDays = Period.ofDays(30);
         assertEquals(6, may4.plus(thirtyDays).getMonthValue());
 
+        // time-zone considerations
+        ZoneId.of("Brazil/East").getRules().getTransitions().forEach(System.out::println);
+
+        // be careful comparing ZonedDateTime
+        Instant instant1 = Instant.now();
+        ZonedDateTime zdt1 = ZonedDateTime.ofInstant(instant1, ZoneId.of("Brazil/East"));
+        ZonedDateTime zdt2 = ZonedDateTime.ofInstant(instant1, ZoneId.of("Brazil/Acre"));
+
+        System.out.println(zdt1);
+        System.out.println(zdt2);
+        assertNotEquals(zdt1, zdt2);
+        assertNotEquals(zdt1.toLocalDateTime(), zdt2.toLocalDateTime());
+        assertEquals(zdt1.toInstant(), zdt2.toInstant());
+
+        // instant operations
+        Instant januaryFirst = LocalDateTime.of(2024, 1, 1, 1, 1, 1).toInstant(ZoneOffset.ofHours(-3));
+        Instant januarySecond = LocalDateTime.of(2024, 1, 2, 1, 1, 1).toInstant(ZoneOffset.ofHours(-3));
+        assertEquals(1, januaryFirst.until(januarySecond, ChronoUnit.DAYS));
+        assertEquals(24, januaryFirst.until(januarySecond, ChronoUnit.HOURS));
+
+        // question deep dive:
+        var ins1 = Instant.now();
+        Thread.sleep(100);
+        var ins2 = Instant.now();
+        assertEquals(0, ins1.truncatedTo(ChronoUnit.MINUTES)
+                .compareTo(ins2.truncatedTo(ChronoUnit.MINUTES)));
     }
 
 }
