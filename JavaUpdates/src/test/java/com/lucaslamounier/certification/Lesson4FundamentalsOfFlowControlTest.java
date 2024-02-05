@@ -80,7 +80,7 @@ class Lesson4FundamentalsOfFlowControlTest {
 
         // question deep dive
         int xxx = 0;
-        var var = switch (x) {
+        var var = switch (xxx) {
             case 0:
                 System.out.println("Zero");
             case -1, -2, -3:
