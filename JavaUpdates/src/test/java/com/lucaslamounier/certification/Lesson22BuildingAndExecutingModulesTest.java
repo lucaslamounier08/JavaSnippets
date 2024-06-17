@@ -19,6 +19,8 @@ class Lesson22BuildingAndExecutingModulesTest {
         // 003. 23.2 Provides, uses, open and opens directives
 
         // 24.1
+
+        // 24.3
     }
 
 }
