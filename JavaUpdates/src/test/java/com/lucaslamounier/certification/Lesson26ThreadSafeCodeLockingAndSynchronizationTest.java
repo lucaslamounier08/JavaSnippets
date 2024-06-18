@@ -52,6 +52,7 @@ class Lesson26ThreadSafeCodeLockingAndSynchronizationTest {
     void continueTesting() {
         // 003. 26.2 Transactional integrity
 
+        // 004. 26.3 Visibility
     }
 
 }
