@@ -11,6 +11,8 @@ class Lesson27WorkingWithDatabasesTest {
         // 002. 27.1 Making the connection
 
         // 003. 27.2 Statement and ResultSet
-        
+
+        // 004. 27.3 PreparedStatement
+
     }
 }
