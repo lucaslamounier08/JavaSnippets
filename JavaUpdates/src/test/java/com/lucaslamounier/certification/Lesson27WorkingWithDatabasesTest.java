@@ -8,6 +8,7 @@ class Lesson27WorkingWithDatabasesTest {
 
     @Test
     void lesson27WorkingWithDatabasesTest() {
-
+        // 002. 27.1 Making the connection
+        
     }
 }
