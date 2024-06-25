@@ -8,6 +8,9 @@ class Lesson29JavaSerializationTest {
 
     @Test
     void lesson29JavaSerializationTest() {
+        // 002. 29.1 Default serialization
 
+        // 003. 29.2 Customizing serialization
+        
     }
 }
