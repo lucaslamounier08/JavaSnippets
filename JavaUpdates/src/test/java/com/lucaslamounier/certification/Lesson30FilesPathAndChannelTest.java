@@ -12,5 +12,7 @@ class Lesson30FilesPathAndChannelTest {
 
         // 003. 30.2 Files methods - part 2
 
+        // 004. 30.3 Working with Channel
+        
     }
 }
