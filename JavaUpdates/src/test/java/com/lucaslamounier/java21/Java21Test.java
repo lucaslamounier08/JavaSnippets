@@ -3,6 +3,10 @@ package com.lucaslamounier.java21;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
+
 class Java21Test {
 
     record Point(int x, int y) {
@@ -26,7 +30,9 @@ class Java21Test {
     }
 
     enum Color {RED, GREEN, BLUE}
+
     record ColoredPoint(Point point, Color color) {}
+
     record RandomPoint(ColoredPoint cp) {}
 
     public static Color getRamdomPointColor(RandomPoint r) {
@@ -44,11 +50,45 @@ class Java21Test {
         Color ramdomPointColor = getRamdomPointColor(
                 new RandomPoint(
                         new ColoredPoint(
-                                new Point(3,4), Color.RED
+                                new Point(3, 4), Color.RED
                         )
                 ));
         Assertions.assertThat(ramdomPointColor).isEqualTo(Color.RED);
     }
 
+    static String processInputNew(String input) {
+        String output;
+        switch (input) {
+            case null -> output = "Oops, null";
+            case String s when "Yes".equalsIgnoreCase(s) -> output = "It's Yes";
+            case String s when "No".equalsIgnoreCase(s) -> output = "It's No";
+            case String s -> output = "Try Again";
+        }
+        return output;
+    }
+
+    @Test
+    void testPatternMatchingSwitch() {
+        Assertions.assertThat(processInputNew(null)).isEqualTo("Oops, null");
+        Assertions.assertThat(processInputNew("yes")).isEqualTo("It's Yes");
+        Assertions.assertThat(processInputNew("no")).isEqualTo("It's No");
+        Assertions.assertThat(processInputNew("other string")).isEqualTo("Try Again");
+    }
+
+    @Test
+    void testVirtualThreads() {
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            IntStream.rangeClosed(1, 10_000).forEach(i -> {
+                executor.submit(() -> {
+                    System.out.println(i);
+                    try {
+                        Thread.sleep(Duration.ofSeconds(1));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            });
+        }
+    }
 
 }
