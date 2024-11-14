@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 
@@ -77,6 +78,7 @@ class Java21Test {
 
     @Test
     void testVirtualThreads() {
+        Instant start = Instant.now();
         try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             IntStream.rangeClosed(1, 10_000).forEach(i -> {
                 executor.submit(() -> {
@@ -89,6 +91,9 @@ class Java21Test {
                 });
             });
         }
+
+        System.out.println("Duration of 10000 Virtual Thread, with Thread.sleep of 1 second: " +
+                Duration.between(start, Instant.now()).toMillis() + "ms");
     }
 
 }
